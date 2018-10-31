@@ -23,14 +23,14 @@ double get_mean_grade(const int[], int);
 
 int main(int argc, char const *argv[])
 {
-	int grade_size, grades;
+	int grade_size, grades, grade_array[100]; // problem with windows combiler
 
 	printf("\n=================================\n");
 	printf("How Many Grades Are You Entering?");
 	printf("\n=================================\n --> ");
 	scanf("%d", &grade_size);
 
-	int grade_array[grade_size];  //initiize the array with user input  
+	  
 
 	for (int i = 0; i < grade_size; ++i)
 	{
@@ -49,7 +49,9 @@ int main(int argc, char const *argv[])
 	}
 
 	sort_grades(grade_array, grade_size);
-
+	printf("\n=================================\n");
+	printf("\tGrades Sorted!");
+	printf("\n=================================\n");
 	for (int g = 0; g < grade_size; ++g)
 	{
 		printf("\n%d\n", grade_array[g]);
@@ -62,23 +64,19 @@ int main(int argc, char const *argv[])
 /* Sort the grades in the array using Bubble Sort */
 void sort_grades(int array_grades[], int size)
 {
-
-	int lowest_index = 0, temp, i;
-
-	for (i = 0; i <= size - 2; ++i)  // loop through whole list
-	{
-		for (int j = 1; j < size; ++j)	
-		{
-			if (array_grades[j] < array_grades[lowest_index])
-			{
-				lowest_index = j;
-			}
-		}
-	}
-	// start swapping
-	temp = array_grades[i];
-	array_grades[i] = array_grades[lowest_index];
-	array_grades[lowest_index] = temp;
-	lowest_index = i + 1;
-
+  int i, d, temp;
+ 
+  for (i = 0 ; i < size - 1; i++)
+  {
+    for (d = 0 ; d < size - i - 1; d++)
+    {
+      if (array_grades[d] > array_grades[d+1])
+      {
+        /* Swap Values */
+        temp = array_grades[d];
+        array_grades[d] = array_grades[d+1];
+        array_grades[d+1] = temp;
+      }
+    }
+  }
 }
