@@ -48,13 +48,37 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-	for (int d = 0; d < grade_size; ++d)
+	sort_grades(grade_array, grade_size);
+
+	for (int g = 0; g < grade_size; ++g)
 	{
-		printf("\n%d\n", grade_array[d]);
+		printf("\n%d\n", grade_array[g]);
 	}
 
 	return 0;
 }
 
 
+/* Sort the grades in the array using Bubble Sort */
 void sort_grades(int array_grades[], int size)
+{
+
+	int lowest_index = 0, temp, i;
+
+	for (i = 0; i <= size - 2; ++i)  // loop through whole list
+	{
+		for (int j = 1; j < size; ++j)	
+		{
+			if (array_grades[j] < array_grades[lowest_index])
+			{
+				lowest_index = j;
+			}
+		}
+	}
+	// start swapping
+	temp = array_grades[i];
+	array_grades[i] = array_grades[lowest_index];
+	array_grades[lowest_index] = temp;
+	lowest_index = i + 1;
+
+}
