@@ -103,6 +103,5 @@ int get_lowest_grade(const int array_grades[], int size)
 
 int get_highest_grade(const int array_grades[], int size)
 {
-	// does not return correct value if the user quits early 
-	return array_grades[size];  // array is already sorted, so last index is largest
+	return array_grades[size - 1];  // array is already sorted, so last index is largest
 }
