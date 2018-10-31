@@ -23,7 +23,7 @@ double get_mean_grade(const int[], int);
 
 int main(int argc, char const *argv[])
 {
-	int grade_size, grades, grade_array[100]; // problem with windows combiler
+	int grade_size, grades, lowest_grade, highest_grade, grade_array[100], actual_grade_size = 0; // array has to be initilized after the "grade_size scanf". Windows CL issue 
 
 	printf("\n=================================\n");
 	printf("How Many Grades Are You Entering?");
@@ -31,7 +31,6 @@ int main(int argc, char const *argv[])
 	scanf("%d", &grade_size);
 
 	  
-
 	for (int i = 0; i < grade_size; ++i)
 	{
 		printf("\nEnter Grade\n");
@@ -40,22 +39,36 @@ int main(int argc, char const *argv[])
 		if (grades != -1)
 		{
 			grade_array[i] = grades;
+			actual_grade_size++;
 		}
 		else
 		{
 			// show the report if the user quits early
-			return 1; 
+			break; 
 		}
 	}
 
-	sort_grades(grade_array, grade_size);
+	sort_grades(grade_array, actual_grade_size);
+	// this has to be it's own function; print_all_grades
 	printf("\n=================================\n");
-	printf("\tGrades Sorted!");
+	printf("\tAll Grades");
 	printf("\n=================================\n");
-	for (int g = 0; g < grade_size; ++g)
+	for (int g = 0; g < actual_grade_size; ++g)
 	{
 		printf("\n%d\n", grade_array[g]);
 	}
+
+	printf("\n=================================\n");
+	printf("\tLowest Grade");
+	printf("\n=================================\n");
+	lowest_grade = get_lowest_grade(grade_array, actual_grade_size);
+	printf("%d", lowest_grade);
+
+	printf("\n\n=================================\n");
+	printf("\tHighest Grade");
+	printf("\n=================================\n");
+	highest_grade = get_highest_grade(grade_array, actual_grade_size);
+	printf("%d", highest_grade);
 
 	return 0;
 }
@@ -79,4 +92,17 @@ void sort_grades(int array_grades[], int size)
       }
     }
   }
+}
+
+
+int get_lowest_grade(const int array_grades[], int size)
+{
+	return array_grades[0];  // array is already sorted, so first index is smallest
+}
+
+
+int get_highest_grade(const int array_grades[], int size)
+{
+	// does not return correct value if the user quits early 
+	return array_grades[size];  // array is already sorted, so last index is largest
 }
