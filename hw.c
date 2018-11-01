@@ -119,15 +119,20 @@ int get_highest_grade(const int array_grades[], int size)
 	return array_grades[size - 1];  // array is already sorted, so last index is largest
 }
 
-/* ERROR */
+
 double get_median_grade(const int array_grades[], int size)
 {
-	int half;
-
-	half = size / 2;
-
-	return array_grades[size - 1];  // array is already sorted, so last index is largest
+    float middle_number = 0;
+    
+    if(size % 2 == 0)  //check if array is even
+        middle_number = (array_grades[(size-1)/2] + array_grades[size/2])/2.0;
+    // if number of elements are odd
+    else
+        middle_number = array_grades[size/2];
+    
+    return middle_number;
 }
+
 
 double get_mean_grade(const int array_grades[], int size)
 {
@@ -140,5 +145,5 @@ double get_mean_grade(const int array_grades[], int size)
 
 	mean = count / size;
 
-	return mean;  // array is already sorted, so last index is largest
+	return mean;  
 }
