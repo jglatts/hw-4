@@ -24,6 +24,7 @@ double get_mean_grade(const int[], int);
 int main(int argc, char const *argv[])
 {
 	int grade_size, grades, lowest_grade, highest_grade, grade_array[100], actual_grade_size = 0; // array has to be initilized after the "grade_size scanf". Windows CL issue 
+	double median_grade, mean_grade;
 
 	printf("\n=================================\n");
 	printf("How Many Grades Are You Entering?");
@@ -70,6 +71,18 @@ int main(int argc, char const *argv[])
 	highest_grade = get_highest_grade(grade_array, actual_grade_size);
 	printf("%d", highest_grade);
 
+	printf("\n\n=================================\n");
+	printf("\tMedian Gade");
+	printf("\n=================================\n");
+	median_grade = get_median_grade(grade_array, actual_grade_size);
+	printf("%f", median_grade);
+
+	printf("\n\n=================================\n");
+	printf("\tMean Gade");
+	printf("\n=================================\n");
+	mean_grade = get_mean_grade(grade_array, actual_grade_size);
+	printf("%f", mean_grade);
+
 	return 0;
 }
 
@@ -104,4 +117,28 @@ int get_lowest_grade(const int array_grades[], int size)
 int get_highest_grade(const int array_grades[], int size)
 {
 	return array_grades[size - 1];  // array is already sorted, so last index is largest
+}
+
+/* ERROR */
+double get_median_grade(const int array_grades[], int size)
+{
+	int half;
+
+	half = size / 2;
+
+	return array_grades[size - 1];  // array is already sorted, so last index is largest
+}
+
+double get_mean_grade(const int array_grades[], int size)
+{
+	int count = 0, mean;
+
+	for (int i = 0; i < size; ++i)
+	{
+		count = count + array_grades[i]; 
+	}
+
+	mean = count / size;
+
+	return mean;  // array is already sorted, so last index is largest
 }
