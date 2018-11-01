@@ -36,21 +36,19 @@ int main(int argc, char const *argv[])
 	{
 		printf("\nEnter Grade\n");
 		printf("Enter -1 To Exit\n--> ");
-		scanf("%d", &grades);   //can is stay as one variable? REFRACTOR
-		if (grades != -1)
-		{
+		scanf("%d", &grades);   
+		if (grades != -1){
 			grade_array[i] = grades;
 			actual_grade_size++;
 		}
-		else
-		{
+		else {
 			// show the report if the user quits early
 			break; 
 		}
 	}
 
 	sort_grades(grade_array, actual_grade_size);
-	// this has to be it's own function; print_all_grades
+	
 	printf("\n=================================\n");
 	printf("\tAll Grades");
 	printf("\n=================================\n");
@@ -89,18 +87,15 @@ void sort_grades(int array_grades[], int size)
 {
   int i, d, temp;
  
-  for (i = 0 ; i < size - 1; i++)
-  {
-    for (d = 0 ; d < size - i - 1; d++)
-    {
+  for (i = 0 ; i < size - 1; i++){
+    for (d = 0 ; d < size - i - 1; d++){
       //examine adjacent values, and swap if needed
-      if (array_grades[d] > array_grades[d+1])
-      {
+      if (array_grades[d] > array_grades[d+1]){
         // swap values 
         temp = array_grades[d];
         array_grades[d] = array_grades[d+1];
         array_grades[d+1] = temp;
-      }
+      	}
     }
   }
 }
@@ -108,8 +103,7 @@ void sort_grades(int array_grades[], int size)
 
 void print_all_grades(const int array_grades[], int size)
 {
-	for (int i = 0; i < size; ++i)
-	{
+	for (int i = 0; i < size; ++i) {
 		printf("%d\n", array_grades[i]);
 	}
 }
@@ -132,12 +126,13 @@ double get_median_grade(const int array_grades[], int size)
     double middle_number = 0;
 	
     // check if array is even
-    if(size % 2 == 0)  
+    if(size % 2 == 0) {
         middle_number = (array_grades[(size-1)/2] + array_grades[size/2])/2.0;
-    
-    else
+    }
+    else {
         middle_number = array_grades[size/2];
-    
+    }
+	
     return middle_number;
 }
 
@@ -146,8 +141,7 @@ double get_mean_grade(const int array_grades[], int size)
 {
 	double count = 0, mean;
 
-	for (int i = 0; i < size; ++i)
-	{
+	for (int i = 0; i < size; ++i) {
 		count = count + array_grades[i]; 
 	}
 
