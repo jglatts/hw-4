@@ -1,5 +1,5 @@
 /*
-
+	
 CIS 1057 Assignment 4
 Due: 11/7/18
 Author: John Glatts
@@ -54,10 +54,7 @@ int main(int argc, char const *argv[])
 	printf("\n=================================\n");
 	printf("\tAll Grades");
 	printf("\n=================================\n");
-	for (int g = 0; g < actual_grade_size; ++g)
-	{
-		printf("\n%d\n", grade_array[g]);
-	}
+	print_all_grades(grade_array, actual_grade_size);
 
 	printf("\n=================================\n");
 	printf("\tLowest Grade");
@@ -105,6 +102,15 @@ void sort_grades(int array_grades[], int size)
       }
     }
   }
+}
+
+
+void print_all_grades(const int array_grades[], int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		printf("%d\n", array_grades[i]);
+	}
 }
 
 
