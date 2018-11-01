@@ -93,9 +93,10 @@ void sort_grades(int array_grades[], int size)
   {
     for (d = 0 ; d < size - i - 1; d++)
     {
+      //examine adjacent values, and swap if needed
       if (array_grades[d] > array_grades[d+1])
       {
-        /* Swap Values */
+        // swap values 
         temp = array_grades[d];
         array_grades[d] = array_grades[d+1];
         array_grades[d+1] = temp;
@@ -129,10 +130,11 @@ int get_highest_grade(const int array_grades[], int size)
 double get_median_grade(const int array_grades[], int size)
 {
     double middle_number = 0;
-    
-    if(size % 2 == 0)  //check if array is even
+	
+    // check if array is even
+    if(size % 2 == 0)  
         middle_number = (array_grades[(size-1)/2] + array_grades[size/2])/2.0;
-    // if number of elements are odd
+    
     else
         middle_number = array_grades[size/2];
     
