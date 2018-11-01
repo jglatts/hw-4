@@ -72,16 +72,16 @@ int main(int argc, char const *argv[])
 	printf("%d", highest_grade);
 
 	printf("\n\n=================================\n");
-	printf("\tMedian Gade");
+	printf("\tMedian Grade");
 	printf("\n=================================\n");
 	median_grade = get_median_grade(grade_array, actual_grade_size);
-	printf("%f", median_grade);
+	printf("%.2f", median_grade);
 
 	printf("\n\n=================================\n");
-	printf("\tMean Gade");
+	printf("\tMean Grade");
 	printf("\n=================================\n");
 	mean_grade = get_mean_grade(grade_array, actual_grade_size);
-	printf("%f", mean_grade);
+	printf("%.2f\n", mean_grade);
 
 	return 0;
 }
@@ -122,7 +122,7 @@ int get_highest_grade(const int array_grades[], int size)
 
 double get_median_grade(const int array_grades[], int size)
 {
-    float middle_number = 0;
+    double middle_number = 0;
     
     if(size % 2 == 0)  //check if array is even
         middle_number = (array_grades[(size-1)/2] + array_grades[size/2])/2.0;
@@ -136,7 +136,7 @@ double get_median_grade(const int array_grades[], int size)
 
 double get_mean_grade(const int array_grades[], int size)
 {
-	int count = 0, mean;
+	double count = 0, mean;
 
 	for (int i = 0; i < size; ++i)
 	{
