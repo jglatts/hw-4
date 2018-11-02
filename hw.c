@@ -127,10 +127,10 @@ double get_median_grade(const int array_grades[], int size)
 	
     // check if array is even
     if(size % 2 == 0) {
-        middle_number = (array_grades[(size-1)/2] + array_grades[size/2])/2.0;
+        middle_number = (array_grades[(size - 1) / 2 ] + array_grades[size / 2]) / 2;
     }
     else {
-        middle_number = array_grades[size/2];
+        middle_number = array_grades[size / 2];
     }
 	
     return middle_number;
