@@ -23,20 +23,21 @@ double get_mean_grade(const int[], int);
 
 int main(int argc, char const *argv[])
 {
-	int grade_size, grades, lowest_grade, highest_grade, grade_array[100], actual_grade_size = 0; // array has to be initilized after the "grade_size scanf". Windows CL issue 
+	int grade_size, grades, lowest_grade, highest_grade, actual_grade_size = 0; // array has to be initilized after the "grade_size scanf". Windows CL issue 
 	double median_grade, mean_grade;
 
 	printf("\n=================================\n");
 	printf("How Many Grades Are You Entering?");
 	printf("\n=================================\n --> ");
 	scanf("%d", &grade_size);
+	int grade_array[grade_size];
 
 	  
 	for (int i = 0; i < grade_size; ++i)
 	{
 		printf("\nEnter Grade\n");
 		printf("Enter -1 To Exit\n--> ");
-		scanf("%d", &grades);   
+		scanf("%d", &grades);
 		if (grades != -1){
 			grade_array[i] = grades;
 			actual_grade_size++;
@@ -100,6 +101,7 @@ void sort_grades(int array_grades[], int size)
 }
 
 
+/* Print all grades in array */
 void print_all_grades(const int array_grades[], int size)
 {
 	for (int i = 0; i < size; ++i) {
@@ -108,18 +110,21 @@ void print_all_grades(const int array_grades[], int size)
 }
 
 
+/* Return the lowest grade */
 int get_lowest_grade(const int array_grades[], int size)
 {
 	return array_grades[0];  // array is already sorted, so first index is smallest
 }
 
 
+/* Return the highest grade */
 int get_highest_grade(const int array_grades[], int size)
 {
 	return array_grades[size - 1];  // array is already sorted, so last index is largest
 }
 
 
+/* Return median grade as a double */
 double get_median_grade(const int array_grades[], int size)
 {
     double middle_number = 0;
@@ -136,6 +141,7 @@ double get_median_grade(const int array_grades[], int size)
 }
 
 
+/* Return mean grade as a double */
 double get_mean_grade(const int array_grades[], int size)
 {
 	double count = 0, mean;
