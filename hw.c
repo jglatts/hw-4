@@ -42,7 +42,6 @@ int main(int argc, char const *argv[])
 			actual_grade_size++;
 		}
 		else {
-			// show the report if the user quits early
 			break; 
 		}
 	}
